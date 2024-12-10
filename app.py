@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, g, flash, abort, url_for
-from ENIGMA import Cipher as cipher_msg, Decipher as decipher_msg
+from ENIGMA import Cipher as cipher_msg, Decipher as decipher_msg, SteckerbrettMachen as SM
 
 
 DEBUG = True
@@ -23,9 +23,9 @@ def process():
     rotor2 = int(request.form['rotor2'])
     rotor3 = int(request.form['rotor3'])
     plugboard = request.form['plugboard']
-    
+    msg = SM()
     action = request.form['action']
-    
+    flash(f'Рандомно сгенерированное соединение проводов: {msg}')
     if action == 'encrypt':
         cipher = cipher_msg(message, rotor_order, rotor1, rotor2, rotor3, plugboard)
         flash(f'Зашифрованное сообщение: {cipher}')
