@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шифратор ENIGMA</title>
+</head>
+<body>
+    <h1>Шифратор ENIGMA</h1>
+    <form method="POST" action="/process">
+        <label for="message">Сообщение:</label><br>
+        <input type="text" id="message" name="message" required><br><br>
+        
+        <label for="rotor_order">Порядок роторов:</label><br>
+        <input type="text" id="rotor_order" name="rotor_order" required><br><br>
+        
+        <label for="rotor1">Номер для ротора 1:</label><br>
+        <input type="number" id="rotor1" name="rotor1" required><br><br>
+        
+        <label for="rotor2">Номер для ротора 2:</label><br>
+        <input type="number" id="rotor2" name="rotor2" required><br><br>
+        
+        <label for="rotor3">Номер для ротора 3:</label><br>
+        <input type="number" id="rotor3" name="rotor3" required><br><br>
+        
+        <label for="plugboard">Коммутационная панель:</label><br>
+        <input type="text" id="plugboard" name="plugboard" value=""><br><br>
+        
+        <button type="submit" name="action" value="encrypt">Шифровать</button>
+        <button type="submit" name="action" value="decrypt">Дешифровать</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
